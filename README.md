@@ -11,7 +11,7 @@ https://arxiv.org/pdf/1901.11390.pdf
 
 **Method:** Cycle-attention network + autoregression + processing one object per network iteration.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230421214406584.png" alt="image-20230421214406584" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230421214406584.png" alt="image-20230421214406584" width="70%" hight="70%"  style="zoom:50%;" />
 
 * Attention Network
 
@@ -41,7 +41,7 @@ https://arxiv.org/pdf/2004.12906.pdf
 
 **Architecture:** **Multiple generative models competing to generate images (objects).**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230513164516477.png" alt="image-20230513164516477" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230513164516477.png" alt="image-20230513164516477" width="70%" hight="70%"  style="zoom:50%;" />
 
 **ECON (Expert Competing Object Networks)** contains multiple experts (generative modules). Each expert includes:
 
@@ -66,7 +66,8 @@ https://arxiv.org/pdf/1907.13052.pdf
 **Introduction:** GENESIS is the first object-centric rendering 3D scene generation model and it is capable of decomposing and generating scenes by capturing the relationships between scene components.
 
 **Method:** GENESIS generative model allows parallel encoding and decoding.
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230422155141489.png" alt="image-20230422155141489" width="50%" hight="50%"  style="zoom:50%;" />
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230422155141489.png" alt="image-20230422155141489" width="70%" hight="70%"  style="zoom:50%;" />
 
 
 **Dataset:** Colorful Multi-dSprites, GQN dataset, ShapeStacks. **Task:** Given a starting image and a target image, search for the best sequence of actions (how to move objects) to achieve the target image.
@@ -78,7 +79,7 @@ https://arxiv.org/pdf/1907.13052.pdf
 
 **Method:** **Obtain objects, predict the next representation (continuously correcting) based on the action it will take.**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230501181027189.png" alt="image-20230501181027189" width="50%" hight="50%" style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230501181027189.png" alt="image-20230501181027189" width="70%" hight="70%" style="zoom:50%;" />
 
  **Object-centric representation:**
 
@@ -106,7 +107,7 @@ https://arxiv.org/pdf/2001.02407.pdf
 
 **Method:** **SPACE = Foreground Module + Background Module; Foreground and background are learned separately, and then combined to form the entire image.**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230421205602861.png" alt="image-20230421205602861" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230421205602861.png" alt="image-20230421205602861" width="70%" hight="70%"  style="zoom:50%;" />
 
 * Foreground Module: Models the foreground as structured latent variables (dividing the image into multiple cells, each cell modeling an object in the scene, each cell associated with a set of latent variables), which are used to compute foreground image components and finally combine them into an average foreground image.
 * Background Module: Models the mixture probability πk and RGB distribution separately to model background components.
@@ -122,7 +123,7 @@ https://arxiv.org/pdf/2001.02407.pdf
 
 **Method:**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230425114833812.png" alt="image-20230425114833812" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230425114833812.png" alt="image-20230425114833812" width="70%" hight="70%"  style="zoom:50%;" />
 
 * Interaction Module: Computes physically plausible relationships between objects and the relationships between objects and the background, considering spatial correlations to make the generated images more realistic.
 * Scene Synthesis and Rendering Module: Samples foreground and background, aggregates them into a tensor, and generates images.
@@ -161,17 +162,17 @@ https://arxiv.org/pdf/2003.07449.pdf
 
 * Scene Graph Similarity Module (SGSM): Improves the fidelity of generated image layouts. The SGSM module calculates the similarity between the scene graph and the generated image, providing fine-grained matching-based supervision between the positional scene graph and the generated image.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230427215018552.png" alt="image-20230427215018552" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230427215018552.png" alt="image-20230427215018552" width="30%" hight="30%"  style="zoom:50%;" />
 
 * Instance-aware conditioning: Helps the model map overlapping conditional semantic masks to individual object instances by introducing instance boundary information. This makes it easier for the model to distinguish unique object instances.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230429205537094.png" alt="image-20230429205537094" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230429205537094.png" alt="image-20230429205537094" width="30%" hight="30%"  style="zoom:50%;" />
 
 **Method: GAN with Layout as a Cue**
 
 * Model Architecture: The OC-GAN model is based on the GAN framework.
 
-  <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230427214526498.png" alt="image-20230427214526498" width="50%" hight="50%"  style="zoom:50%;" />
+  <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230427214526498.png" alt="image-20230427214526498" width="70%" hight="70%"  style="zoom:50%;" />
 
   * The Generator module generates images conditioned on the ground truth layout. It is constructed based on a classical residual architecture.
   * The Discriminator predicts whether the input image is real or generated. The Discriminator has an additional component that distinguishes the objects present in the input image blocks corresponding to the object bounding boxes in the ground reality layout.
@@ -218,7 +219,7 @@ https://arxiv.org/pdf/2006.06130.pdf
 
 **Method:** Learn and infer 3D center coordinates, infer object-level 3D appearance representation, and generate 3D images from 2D images captured from multiple viewpoints.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230424212320618.png" alt="image-20230424212320618" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230424212320618.png" alt="image-20230424212320618" width="70%" hight="70%"  style="zoom:50%;" />
 
 * Encoder:
 
@@ -258,7 +259,7 @@ https://arxiv.org/pdf/2104.07658.pdf
 
 **Method:** (1) A CNN encoder for extracting compact feature representations, (2) an iterative binding module with learnable queries that acts similar to soft clustering, assigning each pixel to a motion group, (3) a CNN decoder that decodes each query individually into full-resolution layer outputs.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230423155438041.png" alt="image-20230423155438041" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230423155438041.png" alt="image-20230423155438041" width="70%" hight="70%"  style="zoom:50%;" />
 
 * CNN encoder:
   * Input: Precomputed optical flow between two frames
@@ -287,13 +288,13 @@ https://arxiv.org/pdf/2106.11952.pdf
 
 **Background:** The success of contrastive self-supervised learning heavily relies on the object-centric prior provided by ImageNet, where different augmented views of the same image correspond to the same object. However, when pretraining on more complex scene images with many objects, the results are not as effective.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505205043501.png" alt="image-20230505205043501" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505205043501.png" alt="image-20230505205043501" width="70%" hight="70%"  style="zoom:50%;" />
 
 **Introduction:** This paper proposes a multi-stage framework for unsupervised object-level representation learning, leveraging image-level self-supervised pretraining as a prior for discovering object-level semantic correspondences in scene images. Specifically, it first utilizes an unsupervised region proposal algorithm to extract potential object-based regions in the scene images. Then, a region correspondence generation scheme is proposed to discover corresponding object instances for the proposed regions in the embedding space using a pretrained model from image-level contrastive learning. Finally, the obtained object-instance pairs are used to construct positive sample pairs for object-level representation learning.
 
 **Applications:** Several cross-image object-instance pairs and visual correspondences are discovered, with a focus on improving representation learning through high-quality correspondences.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505205410754.png" alt="image-20230505205410754" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505205410754.png" alt="image-20230505205410754" width="70%" hight="70%"  style="zoom:50%;" />
 
 **Method:** The ORL extends the existing image-level contrastive learning framework to the object level by leveraging instance discrimination priors. The process involves several contrastive learning modules in Stage 1 and Stage 3.
 
@@ -312,11 +313,11 @@ https://arxiv.org/pdf/2104.09958.pdf
 
 **Method:** The model is based on a probabilistic graphical model with an autoencoder. +The object representation is based on IC-SBP (with a focus on IC-SBP).
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230512210953447.png" alt="image-20230512210953447" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230422155141489.png" alt="image-20230422155141489" width="70%" hight="70%"  style="zoom:50%;" />
 
 IC-SBP clusters pixel embeddings into a variable number of soft attention masks. The algorithm involves sampling pixel locations not yet assigned to clusters, creating soft or hard clusters based on the distances between the embedding of the selected pixel location and all other pixel embeddings, and repeating this process until all pixels are explained or a stopping condition is reached. The output of the algorithm is a set of normalized attention masks (clusters) for k objects. **IC-SBP differs from iterative refinement as it doesn't require prior initialization of a fixed number of clusters.**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230503220254183.png" alt="image-20230503220254183" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230503220254183.png" alt="image-20230503220254183" width="70%" hight="70%"  style="zoom:50%;" />
 
 **Dataset:** ObjectsRoom, ShapeStacks, Sketchy, MIT-Princeton Amazon Picking Challenge (APC) 2016 object segmentation dataset. 
 
@@ -332,7 +333,7 @@ https://arxiv.org/pdf/2110.11405.pdf
 
 **Knowledge:** DALL·E has recently demonstrated the capability of systematically generalizing zero-shot image generation. Trained on a dataset of text-image pairs, it can generate plausible images even from unfamiliar text prompts such as "avocado chair" or "lettuce hedgehog," which is a form of systematic generalization in the text-to-image domain.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230429215214103.png" alt="image-20230429215214103" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230429215214103.png" alt="image-20230429215214103" width="70%" hight="70%"  style="zoom:50%;" />
 
 DALL-E: Input text units serve as composable units, and the generated images exhibit consistency.
 
@@ -398,7 +399,7 @@ Three main components: ① Image Encoder based on CNN ② Recurrent Slot Encoder
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230502205847839.png" alt="image-20230502205847839" width="50%" hight="50%"  style="zoom:50%;" />
 
 
-Training: <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230502210105114.png" alt="image-20230502210105114" width="50%" hight="50%"  style="zoom:50%;" /> (Cross-entropy loss (CE) is used to train the slot-transformer decoder, and the discrete VAE (dvae) is used to train the discrete encoder and decoder for better slot representations.)
+Training: <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230502210105114.png" alt="image-20230502210105114" width="20%" hight="20%"  style="zoom:50%;" /> (Cross-entropy loss (CE) is used to train the slot-transformer decoder, and the discrete VAE (dvae) is used to train the discrete encoder and decoder for better slot representations.)
 
 Datasets: CATER, CATERTex, MOVi-Solid, MOVi-Tex, MOVi-D, and MOVi-E
 
@@ -411,7 +412,7 @@ https://arxiv.org/pdf/2210.05519.pdf
 
 **Introduction:** EGO is proposed as a method to learn object-centric representations using an energy-based model. By utilizing off-the-shelf self-attention blocks in Transformers to form permutation-invariant energy functions, we can infer object-centric latent variables using gradient-based MCMC methods, where permutation equivariance is automatically ensured.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230504202911236.png" alt="image-20230504202911236" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230504202911236.png" alt="image-20230504202911236" width="70%" hight="70%"  style="zoom:50%;" />
 
 **Method:** The goal of this method is to learn a mapping from visual observations x to a set of vectors {zk} that describe objects. We adopt an encoder-decoder architecture, where our EGO module serves as the encoder, transforming unstructured observations into structured object representations. EGO is actually designed to learn a mapping relationship between images and object representations.
 
@@ -421,7 +422,7 @@ https://arxiv.org/pdf/2210.05519.pdf
 
 **Specific Steps: Randomly initialize latent representation -> Update latent representation using energy function and gradient-based MCMC sampling method (Zt+1 involves Zt) -> Obtain zt+1 latent representation -> Iterate in a loop**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230511213742520.png" alt="image-20230511213742520" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230511213742520.png" alt="image-20230511213742520" width="70%" hight="70%"  style="zoom:50%;" />
 
 **Datasets:** CLEVR (Johnson et al., 2017), MultidSprites (Matthey et al., 2017), Tetrominoes (Greff et al., 2019), CLEVR-6
 
@@ -432,11 +433,11 @@ https://arxiv.org/pdf/2302.08023.pdf
 
 **Introduction:** We propose a cyclic walk between perceptual features extracted from CNN or Transformers and object entities. First, slot attention is used to obtain slot representations. Then, based on pairwise similarity between perceptual features (referred to as "parts") and slot-bound object representations (referred to as "wholes"), entity-feature correspondences are established along high transition probabilities. **Without a decoder, we propose cyclic walks on static images. Slot representations -> Cyclic Walk** Unsupervised.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230504215845974.png" alt="image-20230504215845974" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230504215845974.png" alt="image-20230504215845974" width="40%" hight="40%"  style="zoom:50%;" />
 
 Cyclic Walks:
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505200203629.png" alt="image-20230505200203629" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505200203629.png" alt="image-20230505200203629" width="60%" hight="60%"  style="zoom:50%;" />
 
 ("Parts" refer to feature vectors of non-overlapping image patches extracted from the input image, while "wholes" refer to object-centric representations.) (The cyclic walks process is similar to the interaction between wholes and parts in the part-whole theory, allowing the model to learn more accurate and robust representations of entity features and their correspondences.)
 
@@ -459,15 +460,15 @@ Cyclic Walks:
 * Whole-Parts-Whole Cyclic Walks introduce two directions of cyclic walks: (a) from wholes to parts and back to wholes (W-P-W walk) and (b) from parts to wholes and back to parts (P-W-P walk), **to learn more accurate feature representations.**
 
   * W-P-W Cyclic Walks: As a supervisory signal for object-centric representation learning, x is parts, and ^s is wholes.
-  * <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202512586.png" alt="image-20230505202512586" width="50%" hight="50%"  style="zoom:50%;" />
+  * <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202512586.png" alt="image-20230505202512586" width="40%" hight="40%"  style="zoom:50%;" />
 
-Loss term: <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202546333.png" alt="image-20230505202546333" width="50%" hight="50%"  style="zoom:50%;" />
+Loss term: <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202546333.png" alt="image-20230505202546333" width="20%" hight="20%"  style="zoom:50%;" />
 
 * P-W-P Cyclic Walks: While W-P-W walks enhance the diversity of slot bases, there exists an ill-posed case where a finite set of slot bases cannot cover all semantic content of an image.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202832391.png" alt="image-20230505202832391" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202832391.png" alt="image-20230505202832391" width="20%" hight="20%"  style="zoom:50%;" />
 
- <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202856862.png" alt="image-20230505202856862" width="50%" hight="50%"  style="zoom:50%;" />
+ <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230505202856862.png" alt="image-20230505202856862" width="25%" hight="25%"  style="zoom:50%;" />
 
 
 **Datasets:** Stanford Dogs, Stanford Cars, CUB 200 Birds, and Flowers as benchmark datasets. Pascal VOC 2012 and COCO 2017, COCO Stuff-27, and COCO Stuff-3.
@@ -484,7 +485,7 @@ https://arxiv.org/pdf/2303.10834.pdf
 
 **Method: Encoder (consistent with traditional, obtains slot representations), Decoder using diffusion modeling (reconstructing images)**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230423192405624.png" alt="image-20230423192405624" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230423192405624.png" alt="image-20230423192405624" width="70%" hight="70%"  style="zoom:50%;" />
 
 * Encoder: Encodes the image into slot representations (slot attention).
 
@@ -517,12 +518,12 @@ https://arxiv.org/pdf/2209.14860.pdf
 
 **Method:** Design similar to autoencoder: Module 1 extracts features from the input data (encoder); Module 2 groups them into a set of latent vectors representing slots; Module 3 (decoder) reconstructs some target signals from the latent vectors.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230508211006858.png" alt="image-20230508211006858" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230508211006858.png" alt="image-20230508211006858" width="70%" hight="70%"  style="zoom:50%;" />
 
 The key difference of this approach from other methods is that the task of the decoder is to reconstruct features from self-supervised pretraining, rather than reconstructing the original input.
 
 * Feature Reconstruction as Training Signal: Previously, the task (at least initially) strongly focused on low-level image features such as color statistics. This quickly reduces the reconstruction error, but the generated model does not discover objects beyond the dataset, where objects are mainly determined by different object colors. Minimize the following loss to reconstruct self-supervised features:
-* <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230508211924892.png" alt="image-20230508211924892" width="50%" hight="50%"  style="zoom:50%;" />
+* <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230508211924892.png" alt="image-20230508211924892" width="30%" hight="30%"  style="zoom:50%;" />
 * Object-Centric Learning Architecture in the Real World:
   * Encoder: VIK encoder is used to learn feature representations.
   * Slot Attention: We primarily use the original Slot Attention formulation for grouping the set of features into slot vectors, with certain modifications: ① No position encoding is added to the ViT features before Slot Attention. ② A small single hidden layer MLP is added, which transforms each encoder feature before Slot Attention. (Enhances representation learning capability)
@@ -543,7 +544,7 @@ https://arxiv.org/pdf/2303.08132.pdf
 
 **Method:** We utilize an instance mask to indicate the location and shape of the target object and employ an RNN-based module and a memory network to extract motion features from previous masks, store and retrieve dynamic information, and predict the shape information for the next frame based on motion clues.
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230510151154704.png" alt="image-20230510151154704" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230510151154704.png" alt="image-20230510151154704" width="70%" hight="70%"  style="zoom:50%;" />
 * Memory Network
   * Step 1: **Current instance mask --> Extract current motion pattern z --> Find the most similar motion pattern ^z --> Predict the next state of z based on ^z** (Specifically, the encoder qφ extracts the motion pattern zkt−n:t=qφ(mkt−n:t) given the input. The memory network M stores representative motion patterns vi. When given the input motion pattern zkt−n:t, the attention weight vector wkt−n:t is computed to determine the most matching motion pattern ^z, which represents the motion pattern most similar to the current input zkt−n:t. By utilizing the stored representative motion pattern ^z in the memory bank, it assists in predicting the next state of z.) Train qφ and M.
   * Step 2: **Previous instance mask --> Extract motion pattern z --> Find the most similar motion pattern ^z --> Predict the next state of z based on ^z** (Specifically, the estimated mask mkt−n:t−1 from a target video segmentation method is used as input to predict the mask mkt. Using another encoder pθ, the motion pattern zkt−n:t−1=pθ(mkt−n:t−1) is extracted, converting the previous input mask sequence mkt−n:t−1 into the corresponding motion pattern zkt−n:t−1. Then, using the previously mentioned similar approach, the memory bank is accessed to match zkt−n:t−1 with the learned motion patterns and retrieve the corresponding motion pattern ^zkt−n:t−1.) Train pθ.
@@ -571,7 +572,7 @@ https://arxiv.org/pdf/2303.17842.pdf
 
 **Method:** **Add two modules to the slot attention to address the bleeding issue.**
 
-<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230510212831873.png" alt="image-20230510212831873" width="50%" hight="50%"  style="zoom:50%;" />
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230510212831873.png" alt="image-20230510212831873" width="70%" hight="70%"  style="zoom:50%;" />
 
 In this work, the model needs to provide guidance to the slots on what to attend and what not to attend. **ARK** protects and stabilizes the slots from background noise by reducing noise and solidifying class-object patterns in the attention maps between slots and pixels. **IPPE** guides the slots towards regions where objects might exist by providing positional cues to the slots.
 
