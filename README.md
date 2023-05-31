@@ -1,4 +1,17 @@
 # Awesome-Object-Centric-Learning
+## Timeline
+[*2019*](#2019)
+
+[*2020*](#2020)
+
+[*2021*](#2021)
+
+[*2022*](#2022)
+
+[*2023*](#2023)
+
+## 2019
+
 ### MONet: Unsupervised Scene Decomposition and Representation - 22 Jan 2019
 
 https://arxiv.org/pdf/1901.11390.pdf
@@ -28,6 +41,8 @@ Input/Output: Original image + mask (modeling the masked regions) --> Generates 
 
 **Dataset:** Non-trivial 3D scenes with varying numbers of objects (e.g., CLEVR) + Objects Room dataset + Multi-dSprites. 
 **Limitation**: We haven't dealt with datasets that have increased visual complexity.
+
+## 2020
 
 ### TOWARDS CAUSAL GENERATIVE SCENE MODELS VIA COMPETITION OF EXPERTS-2020 4 27
 
@@ -181,6 +196,8 @@ https://arxiv.org/pdf/2003.07449.pdf
 
 **Dataset:** COCO-Stuff, Visual Genome.
 
+## 2021
+
 ### SIMONe: View-Invariant, Temporally-Abstracted Object Representations via Unsupervised Video Decomposition-2021
 
 https://arxiv.org/pdf/2106.03849.pdf
@@ -301,6 +318,8 @@ https://arxiv.org/pdf/2106.11952.pdf
 * Image-level pretraining: Obtains an unsupervised pretrained model from image-level tasks to learn global information and visual features of images.
 * Correspondence discovery: Utilizes the pretrained model to find other images in the training set most similar to each image, forming image pairs. Then, potential object regions of interest (RoIs) that may contain objects are generated through unsupervised region proposal algorithms.
 * Object-level pretraining: The BYOL framework performs object-level representation learning. Further pretraining is performed on the RoIs using image pairs to learn more semantically and object-related representations. (The aim is to have similar objects, such as cars, closer in the embedding space for better learning. )
+
+## 2022
 
 ### GENESIS-V2: Inferring Unordered Object Representations without Iterative Refinement-jan 2022
 
@@ -426,6 +445,8 @@ https://arxiv.org/pdf/2210.05519.pdf
 
 **Datasets:** CLEVR (Johnson et al., 2017), MultidSprites (Matthey et al., 2017), Tetrominoes (Greff et al., 2019), CLEVR-6
 
+
+## 2023
 
 ### Object-centric Learning with Cyclic Walks between Parts and Whole-2023 feb
 
