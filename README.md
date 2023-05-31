@@ -58,7 +58,7 @@ The optimal generative module is selected through a **competitive mechanism:**
 
 **Dataset:** Experiments were conducted on synthetic data composed of colored 2D objects  (triangles, squares, and circles) arranged with different occlusions. 
 
-### GENESIS: GENERATIVE SCENE INFERENCE AND SAMPLING WITH OBJECT-CENTRIC LATENT REPRESENTATIONS - 23 Nov 2020
+### GENESIS: GENERATIVE SCENE INFERENCE AND SAMPLING WITH OBJECT-CENTRIC LATENT REPRESENTATIONS - 23 Nov 2020（International Conference on Learning Representations）
 
 https://arxiv.org/pdf/1907.13052.pdf
 
