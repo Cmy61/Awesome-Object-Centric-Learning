@@ -87,7 +87,7 @@ https://arxiv.org/pdf/1907.13052.pdf
 
 **Dataset:** Colorful Multi-dSprites, GQN dataset, ShapeStacks. **Task:** Given a starting image and a target image, search for the best sequence of actions (how to move objects) to achieve the target image.
 
-### Object-centric Forward Modeling for Model Predictive Control-2020
+### Object-centric Forward Modeling for Model Predictive Control-2020(Conference on Robot Learning (2019))
 
 **Task**: Given the start image and the target image, search for the best sequence of actions (how to move the object) to get the target image
 **Introduction:** A method for learning object-centric forward models that can be used for planning a sequence of actions to achieve long-term goals. Each object has an explicit spatial position and implicit visual features, and learn to use random interactive data to model action effects.
@@ -110,7 +110,7 @@ https://arxiv.org/pdf/1907.13052.pdf
 **Dataset:** Synthetic environments in MuJoCo and real Sawyer robot (as the paper addresses how to make the robot prepare and adjust objects to reach a target position).
 
 
-### SPACE:UNSUPERVISED OBJECT-ORIENTED SCENE - 15 Mar 2020
+### SPACE:UNSUPERVISED OBJECT-ORIENTED SCENE - 15 Mar 2020(International Conference on Learning Representations (2020))
 
 https://arxiv.org/pdf/2001.02407.pdf
 
@@ -129,7 +129,7 @@ https://arxiv.org/pdf/2001.02407.pdf
 
 **Dataset:** Atari, 3D-Rooms 
 
-### RELATE: Physically Plausible Multi-Object Scene Synthesis Using Structured Latent Spaces-2020
+### RELATE: Physically Plausible Multi-Object Scene Synthesis Using Structured Latent Spaces-2020(Neural Information Processing Systems (2020))
 
 **Task:** Physically synthesizing multi-object scenes (generating images from given scene descriptions such as object positions, shapes, and appearances)+target scene editing+unsupervised model. 
 **Background:** Image generation is typically achieved through Generative Adversarial Networks (GANs), where the generated images are realistic but **the parameterized random vectors behind them are not interpretable**.
@@ -161,7 +161,8 @@ https://arxiv.org/pdf/2001.02407.pdf
 
 **Limitations:** The model is highly sensitive to the camera's perspective range in the scene, and it cannot accurately capture the variations in appearance introduced by significant changes in the viewpoint throughout a sequence.
 
-### Object-Centric Image Generation from Layouts-2020.12.3
+### Object-Centric Image Generation from Layouts-2020.12.3(
+Proceedings of the AAAI Conference on Artificial Intelligence (2021)）
 
 https://arxiv.org/pdf/2003.07449.pdf
 
@@ -198,7 +199,7 @@ https://arxiv.org/pdf/2003.07449.pdf
 
 ## 2021
 
-### SIMONe: View-Invariant, Temporally-Abstracted Object Representations via Unsupervised Video Decomposition-2021
+### SIMONe: View-Invariant, Temporally-Abstracted Object Representations via Unsupervised Video Decomposition-2021(Neural Information Processing Systems (2021))
 
 https://arxiv.org/pdf/2106.03849.pdf
 
@@ -226,7 +227,7 @@ Decoder: We independently decode each pixel, and the pixel-level decoder takes s
 
 **Dataset**: Objects Room 9 + CATER (moving camera) + Playroom
 
-### ROOTS: Object-Centric Representation and Rendering of 3D Scenes-2021
+### ROOTS: Object-Centric Representation and Rendering of 3D Scenes-2021(Journal of machine learning research (2020))
 
 https://arxiv.org/pdf/2006.06130.pdf
 
@@ -266,7 +267,7 @@ https://arxiv.org/pdf/2006.06130.pdf
 **Dataset:** ShapeNet, MSM
 
 
-### Self-supervised Video Object Segmentation by Motion Grouping-2021
+### Self-supervised Video Object Segmentation by Motion Grouping-2021(2021 IEEE/CVF International Conference on Computer Vision (ICCV) (2021))
 
 https://arxiv.org/pdf/2104.07658.pdf
 
@@ -299,7 +300,7 @@ https://arxiv.org/pdf/2104.07658.pdf
 **Dataset**: MoCA, DAVIS2016, SegTrackv2, FBMS59
 
 
-### Unsupervised Object-Level Representation Learning from Scene Images-2021
+### Unsupervised Object-Level Representation Learning from Scene Images-2021(Neural Information Processing Systems (2021))
 
 https://arxiv.org/pdf/2106.11952.pdf
 
@@ -321,7 +322,7 @@ https://arxiv.org/pdf/2106.11952.pdf
 
 ## 2022
 
-### GENESIS-V2: Inferring Unordered Object Representations without Iterative Refinement-jan 2022
+### GENESIS-V2: Inferring Unordered Object Representations without Iterative Refinement-jan 2022(Neural Information Processing Systems (2021))
 
 https://arxiv.org/pdf/2104.09958.pdf
 
