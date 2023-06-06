@@ -43,6 +43,28 @@ Input/Output: Original image + mask (modeling the masked regions) --> Generates 
 **Limitation**: We haven't dealt with datasets that have increased visual complexity.
 
 ## 2020
+### Object-centric learning with slot attention-2020（Neural Information Processing Systems (2020)）
+
+https://arxiv.org/pdf/2006.15055.pdf
+
+**任务：**对象表示、对象发现、集合预测（分类对象）
+
+**背景：**传统的表示方法没有将场景拆分为单独的对象，因此无法很好地捕捉这些组成特性。
+
+**简介：**文章提出一种可以从低级感知输入中学习以对象为中心的表示机制，并且引入了注意力机制slot attention，帮助从图像中获取对象表示。
+
+**方法：**
+
+- slot attention模型：输入为图像的特征向量，该模型通过多轮注意力竞争将slot绑定到输入图像的对象上，实现一个槽对应一个对象。
+
+- 重要性质：输入的**置换不变性**和**槽的置换等价性**。
+
+- 算法：
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606165929858.png" alt="image-20230606165929858" width="70%" hight="70%"  style="zoom:50%;" />
+
+**数据集：**CLEVR（带面具）、Multi-dSprites 和 Tetrominoes
+
+https://github.com/deepmind/multi_object_datasets
 
 ### TOWARDS CAUSAL GENERATIVE SCENE MODELS VIA COMPETITION OF EXPERTS-2020 4 27
 
@@ -320,6 +342,77 @@ https://arxiv.org/pdf/2106.11952.pdf
 * Object-level pretraining: The BYOL framework performs object-level representation learning. Further pretraining is performed on the RoIs using image pairs to learn more semantically and object-related representations. (The aim is to have similar objects, such as cars, closer in the embedding space for better learning. )
 
 ## 2022
+### CONDITIONAL OBJECT-CENTRIC LEARNING FROM VIDEO-2022（International Conference on Learning Representations (2021)）
+
+https://arxiv.org/pdf/2111.12594.pdf
+
+**任务：**视频中对象分割、跟踪
+
+**背景：**目前无监督多对象表示学习方法仅限于简单的数据集，并且在训练和推理过程中如何与这些模型交互并不完全清楚，需要提供有关粒度级别的提示以达到不同任务的要求。
+
+**简介：**本文提出了一种slot attention的顺序扩展（SAVi）,在该方法中研究人员以光流预测作为自监督目标，并提供提示以确定粒度等级，以解决视频数据中无监督/弱监督的多对象分割和跟踪问题。
+
+**方法：**SAVi主要有编码器、初始化器、矫正器、预测器、解码器、训练几个部分。
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606170847432.png" alt="image-20230606170847432" width="70%" hight="70%"  style="zoom:50%;" />
+
+- **编码器**主要是将输入的视频帧转为向量表示；对槽实现**初始化**主要有两个方式
+  - **在条件情况下**，我们通过简单的 MLP或通过 CNN对条件输入进行编码。或者说如果条件是不可用的话，我们会将初始值设定为固定值。
+  - **在无条件情况下，**我们要么通过为每个视频（在训练和测试时）独立地从高斯分布中采样来随机初始化槽，或者通过学习一组初始槽向量。
+- **矫正器**通过使用Slot Attention中引入的迭代注意机制，用于更新槽表示，使其可用更好地表示对象。
+- **预测器**使用 Transformer 编码器对时隙之间的关系进行建模，预测每个slot在未来的演变，并为整个视频序列提供一个预测。通过使用预测器输出的槽表示，以及逐槽空间广播的方式进行解码。
+- **解码器**生成重建帧。
+
+**数据集：**MOVi++、CATER变体
+
+### Simple Open-Vocabulary Object Detection with Vision Transformers-2022
+
+https://arxiv.org/pdf/2205.06230.pdf
+
+**任务：**目标检测
+
+**背景：**在对数据集相对稀缺的长尾和开放式词汇中目标检测方法还有待提高
+
+**简介：**提供了一个简单的架构和端到端的训练方法，使用了 Vision Transformer 架构，为了将模型转移到检测，研究者对架构进行了一些修改，该方法在零样本文本条件和单样本图像条件下都可以获得非常强大的性能
+
+**方法：**
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606171715267.png" alt="image-20230606171715267" width="70%" hight="70%"  style="zoom:50%;" />
+
+- 模型：模型使用标准的 Vision Transformer 作为图像编码器，并使用类似的 Transformer 架构作为文本编码器。为了使图像编码器适应检测，研究者通过移除token池并将轻量级对象分类和定位头直接附加到图像编码器输出token，将预训练编码器转移到开放词汇对象检测。
+
+- 主要的过程是：
+
+  图像级对比预训练和探测器训练：
+
+  **图像级对比训练**时输入一组图像-文本对，使用图像-文本数据集训练图像和文本编码器，学习图像和文本之间的对应关系，为编码器设定最合适的参数。
+
+  **在探测器训练阶段（微调）**，主要是输入带有标签的图像，然后对图像进行预测。获得预测结果后对模型进行微调，使得它能够准确预测未知类别的对象。这样在实际应用中，即使模型遇到之前没有见过的物体类别，也能够进行识别。
+
+**数据集：**COCO、LVIS 和 O365
+
+### SAVi++: Towards End-to-End Object-Centric Learning from Real-World Videos-2022
+
+https://arxiv.org/pdf/2206.07764.pdf
+
+**任务：**目标分割
+
+**背景：**无监督下，现在基于槽的模型难以扩展到现实世界，并且研究者们意识到运动、深度线索也可以作为视觉信号来源。
+
+**简介：**提出一种利用深度信号的以目标为中心的视频模型。SAVi++，对SAVi进一步优化，它主要特点是利用深度信号和无监督
+
+**方法：**
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606171937735.png" alt="image-20230606171937735" width="70%" hight="70%"  style="zoom:50%;" />
+
+在SAVi基础上，研究者从一下两个部分进行了改进：（1）利用深度作为预测信号(2) 在编码器改进和数据增强方面利用模型缩放策略。
+
+- 利用深度信息：在具有静态物体和相机运动的数据集中不受光流的限制。2深度在许多现实世界中是一个容易获得的信号，即使在没有深度感测能力的情况下，也可以从多摄像头系统中廉价地估计该信号 。
+
+- 缩放策略：
+  - 编码器改进：研究团队使用了一个功能更强大的编码器，它利用 ResNet34 [22] 架构和一个转换器编码器
+  - 数据增强：为了进一步提高模型的鲁棒性，研究团队还应用了一种Inception风格的裁剪数据增强方法。
+
+**数据集：**MOVi-E、MOVi-D、MOVi-C
 
 ### GENESIS-V2: Inferring Unordered Object Representations without Iterative Refinement-jan 2022(Neural Information Processing Systems (2021))
 
@@ -447,6 +540,73 @@ https://arxiv.org/pdf/2210.05519.pdf
 
 
 ## 2023
+### SlotFormer: Unsupervised Visual Dynamics Simulation with Object-Centric Models-2023
+
+https://arxiv.org/pdf/2210.05861.pdf
+
+**任务：**学习物体动态并推测未来动态
+
+**背景：**理解动态在很多领域都有很重要的作用，但是通过纯视觉输入学习复杂系统的动态很困难的。它不仅需要识别不同物体 (objects) 及其属性 (颜色、形状、位置)，还要求模型理解物体之间的相互作用 (例如碰撞、遮挡关系)。
+
+**简介：**本文提出了一个基于 Transformer 的以对象为中心的动力学模型，它可以无监督地学习视频中多物体系统的 动态, 从而推测它们未来的动态 (motion)。
+
+**方法：**
+
+- **基于slot的以对象为中心的表示，**该部分主要是用槽表示视频帧。基于 Slot Attention 架构从视频中提取插槽，大致方法是使用 CNN 编码器提取图像特征，然后将其展平并通过插槽注意机制更新插槽表示，具体方法前面以及提及了，这里就不再赘述。
+
+- **使用自回归变压器进行预测：**
+  - 第一步，SlotFormer 模型将当前时刻的时隙 St 馈送到 Transformer 中进行处理。Transformer 会对当前时隙进行编码，并使用前面已经预测的时隙来进行时空推理，预测出下一个时间步的时隙 St+1。
+  - 第二步，SlotFormer 模型将预测的时隙 St+1 反馈回 Transformer，用于继续进行自回归生成未来的 rollout。
+
+模型会根据前面已经生成的时隙来预测下一个时隙，依此类推，一直生成未来的时隙直到预测出需要的时间步数 K。
+
+- **模型训练**：
+
+在使用SlotFormer模型中，为了避免错误累积问题，使用了并行预测所有时隙的方法。
+
+训练的目标函数：使用了时隙重建损失和图像重建损失作为目标函数的一部分，模型训练通过最小化特征和图像空间中的重建损失来训练整个模型，以达到一个较好的效果。
+
+**数据集：**OBJ3D、CLEVRER、Physion和 PHYRE
+
+
+
+### Invariant Slot Attention: Object Discovery with Slot-Centric Reference Frames-2023
+
+https://arxiv.org/pdf/2302.04973.pdf
+
+**任务：**对象表示
+
+**背景：**研究者发现基于槽的神经网络在自动发现可组合抽象方面有一定进展，但是它们通常无法充分捕捉视觉世界中存在的空间对称性，这会导致样本效率低下。
+
+**简介：**ISA是一种基于槽表示和Slot Attention机制的方法，通过引入参考帧来实现对象发现和跟踪，并获得具有旋转不变性和平移不变性的对象表示。
+
+**方法：**
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173324312.png" alt="image-20230606173324312" width="60%" hight="60%"  style="zoom:50%;" />
+
+具体方法分为两类，平移缩放不变性其实是作为旋转不变性的一个基础。
+
+- 平移和缩放不变性：
+
+  为了实现平移和缩放的不变性，研究者实例化了 2D 插槽位置 (Sp) 和尺度 (Ss)，这是为每个slot设定的参考帧，它们最初可以随机采样或学习。通过sp和ss以及绝对位置编码，研究者可以得到相对位置编码。
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173350410.png" alt="image-20230606173350410" width="30%" hight="30%"  style="zoom:50%;" />
+
+  将输入通过相对位置网格转化为槽的键和值。
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173422453.png" alt="image-20230606173422453" width="30%" hight="30%"  style="zoom:50%;" />
+
+  模型会根据当前槽的键和值来计算注意力权重，从而得到新的槽位位置和尺度。
+
+<img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173451255.png" alt="image-20230606173451255" width="30%" hight="30%"  style="zoom:50%;" />
+
+  最后每个槽会获得一个sp和ss的值，利用这个参考帧就可以保证模型在处理不同尺度、位置的目标时保持平移和缩放的不变性。解码部分，从编码器中学到的槽位置和槽表示中恢复出原始的输入图像。
+
+- 旋转不变性
+
+  为了研究对象的方向对称性，研究者通过PCA方法估计对象的方向，并将其离散化为8个方向，并计算相对位置编码，从而实现旋转不变性。
+
+**数据集：**tetrominoes、object room、multishapenet、clevrtex、waymo open
 
 ### Object-centric Learning with Cyclic Walks between Parts and Whole-2023 feb
 
