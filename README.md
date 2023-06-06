@@ -47,22 +47,22 @@ Input/Output: Original image + mask (modeling the masked regions) --> Generates 
 
 https://arxiv.org/pdf/2006.15055.pdf
 
-**任务：**对象表示、对象发现、集合预测（分类对象）
+**Task:** Object representation, object discovery, set prediction (object classification).
 
-**背景：**传统的表示方法没有将场景拆分为单独的对象，因此无法很好地捕捉这些组成特性。
+**Background:** Traditional representation methods do not decompose scenes into individual objects, thus failing to capture their compositional nature effectively.
 
-**简介：**文章提出一种可以从低级感知输入中学习以对象为中心的表示机制，并且引入了注意力机制slot attention，帮助从图像中获取对象表示。
+**Introduction:** The paper proposes a mechanism for learning object-centric representations from low-level perceptual inputs and introduces the attention mechanism called "slot attention" to aid in extracting object representations from images.
 
-**方法：**
+**Methods:**
 
-- slot attention模型：输入为图像的特征向量，该模型通过多轮注意力竞争将slot绑定到输入图像的对象上，实现一个槽对应一个对象。
+- Slot attention model: Taking the feature vector of an image as input, this model utilizes multiple rounds of attention competition to bind slots to objects in the input image, where each slot corresponds to one object.
+- Key properties: Input **permutation invariance** and **slot permutation equivariance**.
 
-- 重要性质：输入的**置换不变性**和**槽的置换等价性**。
+- Algorithm:
 
-- 算法：
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606165929858.png" alt="image-20230606165929858" width="70%" hight="70%"  style="zoom:50%;" />
 
-**数据集：**CLEVR（带面具）、Multi-dSprites 和 Tetrominoes
+**datasets：**CLEVR（masks）, Multi-dSprites and Tetrominoes
 
 https://github.com/deepmind/multi_object_datasets
 
@@ -346,73 +346,80 @@ https://arxiv.org/pdf/2106.11952.pdf
 
 https://arxiv.org/pdf/2111.12594.pdf
 
-**任务：**视频中对象分割、跟踪
+**Task:** Object segmentation, tracking in videos
 
-**背景：**目前无监督多对象表示学习方法仅限于简单的数据集，并且在训练和推理过程中如何与这些模型交互并不完全清楚，需要提供有关粒度级别的提示以达到不同任务的要求。
+**Background:** Current unsupervised multi-object representation learning methods are limited to simple datasets, and it is not fully clear how to interact with these models during training and inference processes, requiring hints at granularity levels to meet the requirements of different tasks.
 
-**简介：**本文提出了一种slot attention的顺序扩展（SAVi）,在该方法中研究人员以光流预测作为自监督目标，并提供提示以确定粒度等级，以解决视频数据中无监督/弱监督的多对象分割和跟踪问题。
+**Introduction:** This paper proposes a sequential expansion of slot attention (SAVi) in which researchers use optical flow prediction as a self-supervised objective and provide cues to determine granularity levels to address unsupervised/weakly supervised multi-object segmentation and tracking problems in video data.
 
-**方法：**SAVi主要有编码器、初始化器、矫正器、预测器、解码器、训练几个部分。
+**Method:** SAVi consists of several components: Encoder, Initializer, Corrector, Predictor, Decoder, and training.
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606170847432.png" alt="image-20230606170847432" width="70%" hight="70%"  style="zoom:50%;" />
 
-- **编码器**主要是将输入的视频帧转为向量表示；对槽实现**初始化**主要有两个方式
-  - **在条件情况下**，我们通过简单的 MLP或通过 CNN对条件输入进行编码。或者说如果条件是不可用的话，我们会将初始值设定为固定值。
-  - **在无条件情况下，**我们要么通过为每个视频（在训练和测试时）独立地从高斯分布中采样来随机初始化槽，或者通过学习一组初始槽向量。
-- **矫正器**通过使用Slot Attention中引入的迭代注意机制，用于更新槽表示，使其可用更好地表示对象。
-- **预测器**使用 Transformer 编码器对时隙之间的关系进行建模，预测每个slot在未来的演变，并为整个视频序列提供一个预测。通过使用预测器输出的槽表示，以及逐槽空间广播的方式进行解码。
-- **解码器**生成重建帧。
+- Encoder:
 
-**数据集：**MOVi++、CATER变体
+   Converts input video frames into vector representations. Initialization of slots is done in two ways:
+
+  - **Conditioned:** The conditional inputs are encoded either through a simple MLP or a CNN. If the condition is not available, the initial values are set to fixed values.
+  - **Unconditioned:** The slots are either randomly initialized for each video independently by sampling from a Gaussian distribution (during training and testing) or learned as a set of initial slot vectors.
+
+- **Corrector:** Updates slot representations using the iterative attention mechanism introduced in Slot Attention to better represent objects.
+
+- **Predictor:** Models the relationships between slots over time using a Transformer encoder, predicts the evolution of each slot into the future, and provides a prediction for the entire video sequence. Decoding is performed using the slot representations output by the predictor and a per-slot spatial broadcast.
+
+- **Decoder:** Generates reconstructed frames.
+
+**Dataset:** MOVi++, CATER variant
 
 ### Simple Open-Vocabulary Object Detection with Vision Transformers-2022
 
 https://arxiv.org/pdf/2205.06230.pdf
 
-**任务：**目标检测
+**Task:** Object detection
 
-**背景：**在对数据集相对稀缺的长尾和开放式词汇中目标检测方法还有待提高
+**Background:** Object detection methods in long-tail and open-vocabulary datasets with relatively scarce data need improvement.
 
-**简介：**提供了一个简单的架构和端到端的训练方法，使用了 Vision Transformer 架构，为了将模型转移到检测，研究者对架构进行了一些修改，该方法在零样本文本条件和单样本图像条件下都可以获得非常强大的性能
+**Introduction:** The paper provides a simple architecture and an end-to-end training method using the Vision Transformer architecture. To adapt the model to detection, some modifications were made to the architecture. This method achieves strong performance in zero-shot text-conditioned and single-shot image-conditioned scenarios.
 
-**方法：**
+**Method:**
+
+
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606171715267.png" alt="image-20230606171715267" width="70%" hight="70%"  style="zoom:50%;" />
 
-- 模型：模型使用标准的 Vision Transformer 作为图像编码器，并使用类似的 Transformer 架构作为文本编码器。为了使图像编码器适应检测，研究者通过移除token池并将轻量级对象分类和定位头直接附加到图像编码器输出token，将预训练编码器转移到开放词汇对象检测。
+- **Model:** The model uses a standard Vision Transformer as the image encoder and a similar Transformer architecture as the text encoder. To adapt the image encoder for detection, the researchers removed token pooling and directly attached lightweight object classification and localization heads to the image encoder's output tokens, enabling the pretrained encoder for open-vocabulary object detection.
 
-- 主要的过程是：
+- The main processes are:
 
-  图像级对比预训练和探测器训练：
+  - Image-level contrastive pretraining and detector training:
 
-  **图像级对比训练**时输入一组图像-文本对，使用图像-文本数据集训练图像和文本编码器，学习图像和文本之间的对应关系，为编码器设定最合适的参数。
+    During **image-level contrastive training**, a set of image-text pairs is input, and the image and text encoders are trained on an image-text dataset to learn the correspondence between images and texts and set the encoder parameters appropriately.
 
-  **在探测器训练阶段（微调）**，主要是输入带有标签的图像，然后对图像进行预测。获得预测结果后对模型进行微调，使得它能够准确预测未知类别的对象。这样在实际应用中，即使模型遇到之前没有见过的物体类别，也能够进行识别。
+    In the **detector training phase (fine-tuning)**, labeled images are input, and the model makes predictions on the images. After obtaining the prediction results, the model is fine-tuned to accurately predict unknown categories of objects. This enables the model to recognize objects even if they have not been seen before, which is useful in practical applications.
 
-**数据集：**COCO、LVIS 和 O365
+**Dataset:** COCO, LVIS, and O365
 
 ### SAVi++: Towards End-to-End Object-Centric Learning from Real-World Videos-2022
 
 https://arxiv.org/pdf/2206.07764.pdf
 
-**任务：**目标分割
+**Task:** Object segmentation
 
-**背景：**无监督下，现在基于槽的模型难以扩展到现实世界，并且研究者们意识到运动、深度线索也可以作为视觉信号来源。
+**Background:** Under unsupervised settings, slot-based models struggle to scale to real-world scenarios, and researchers have realized that motion and depth cues can also serve as visual signals.
 
-**简介：**提出一种利用深度信号的以目标为中心的视频模型。SAVi++，对SAVi进一步优化，它主要特点是利用深度信号和无监督
+**Introduction:** This paper presents an object-centric video model that utilizes depth signals. SAVi++, an improvement over SAVi, incorporates depth signals and unsupervised learning.
 
-**方法：**
+**Method:**
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606171937735.png" alt="image-20230606171937735" width="70%" hight="70%"  style="zoom:50%;" />
 
-在SAVi基础上，研究者从一下两个部分进行了改进：（1）利用深度作为预测信号(2) 在编码器改进和数据增强方面利用模型缩放策略。
+Building upon SAVi, the researchers made improvements in the following two aspects: (1) leveraging depth as a prediction signal and (2) employing model scaling strategies in encoder improvement and data augmentation.
 
-- 利用深度信息：在具有静态物体和相机运动的数据集中不受光流的限制。2深度在许多现实世界中是一个容易获得的信号，即使在没有深度感测能力的情况下，也可以从多摄像头系统中廉价地估计该信号 。
+- Leveraging depth information: Not being limited by optical flow in datasets with static objects and camera motion. Depth is an easily obtainable signal in many real-world scenarios, even in the absence of depth sensing capabilities, by cheaply estimating the signal from multi-camera systems.
+- Scaling strategies:
+  - Encoder improvement: A more powerful encoder is employed, utilizing the ResNet34 architecture and a transformer encoder.
+  - Data augmentation: To further enhance the model's robustness, an Inception-style cropping data augmentation method is applied.
 
-- 缩放策略：
-  - 编码器改进：研究团队使用了一个功能更强大的编码器，它利用 ResNet34 [22] 架构和一个转换器编码器
-  - 数据增强：为了进一步提高模型的鲁棒性，研究团队还应用了一种Inception风格的裁剪数据增强方法。
-
-**数据集：**MOVi-E、MOVi-D、MOVi-C
+**Dataset:** MOVi-E, MOVi-D, MOVi-C
 
 ### GENESIS-V2: Inferring Unordered Object Representations without Iterative Refinement-jan 2022(Neural Information Processing Systems (2021))
 
@@ -544,29 +551,28 @@ https://arxiv.org/pdf/2210.05519.pdf
 
 https://arxiv.org/pdf/2210.05861.pdf
 
-**任务：**学习物体动态并推测未来动态
+**Task:** Learning object dynamics and predicting future motion
 
-**背景：**理解动态在很多领域都有很重要的作用，但是通过纯视觉输入学习复杂系统的动态很困难的。它不仅需要识别不同物体 (objects) 及其属性 (颜色、形状、位置)，还要求模型理解物体之间的相互作用 (例如碰撞、遮挡关系)。
+**Background:** Understanding dynamics plays a crucial role in various fields, but learning the dynamics of complex systems solely from visual inputs is challenging. It requires not only identifying different objects and their attributes (color, shape, position) but also understanding their interactions, such as collisions and occlusions.
 
-**简介：**本文提出了一个基于 Transformer 的以对象为中心的动力学模型，它可以无监督地学习视频中多物体系统的 动态, 从而推测它们未来的动态 (motion)。
+**Introduction:** This paper presents a Transformer-based object-centric dynamics model, called SlotFormer, that learns the dynamics of multi-object systems in videos unsupervisedly and predicts their future motion.
 
-**方法：**
+**Method:**
 
-- **基于slot的以对象为中心的表示，**该部分主要是用槽表示视频帧。基于 Slot Attention 架构从视频中提取插槽，大致方法是使用 CNN 编码器提取图像特征，然后将其展平并通过插槽注意机制更新插槽表示，具体方法前面以及提及了，这里就不再赘述。
+- **Slot-based object-centric representation:** This component focuses on representing video frames using slots. Slots are extracted from videos using the Slot Attention architecture, which involves encoding image features using a CNN encoder, flattening them, and updating the slot representations through a slot attention mechanism.
+- **Prediction using autoregressive Transformers:**
+  - In the first step, the SlotFormer model takes the slots St at the current time step as input and processes them through a Transformer. The Transformer encodes the current slots and performs spatiotemporal reasoning using the previously predicted slots to generate the next time step's slots St+1.
+  - In the second step, the predicted slots St+1 are fed back into the Transformer in the SlotFormer model to continue the autoregressive generation of future rollouts.
 
-- **使用自回归变压器进行预测：**
-  - 第一步，SlotFormer 模型将当前时刻的时隙 St 馈送到 Transformer 中进行处理。Transformer 会对当前时隙进行编码，并使用前面已经预测的时隙来进行时空推理，预测出下一个时间步的时隙 St+1。
-  - 第二步，SlotFormer 模型将预测的时隙 St+1 反馈回 Transformer，用于继续进行自回归生成未来的 rollout。
+The model predicts the next slot based on the previously generated slots and repeats this process to generate future slots up to the desired time steps K.
 
-模型会根据前面已经生成的时隙来预测下一个时隙，依此类推，一直生成未来的时隙直到预测出需要的时间步数 K。
+- **Model training:**
 
-- **模型训练**：
+In the training of SlotFormer, a parallelized approach is used to predict all slots simultaneously to avoid error accumulation issues.
 
-在使用SlotFormer模型中，为了避免错误累积问题，使用了并行预测所有时隙的方法。
+The training objective function includes slot reconstruction loss and image reconstruction loss. The model is trained by minimizing the reconstruction losses in feature and image space to achieve good performance.
 
-训练的目标函数：使用了时隙重建损失和图像重建损失作为目标函数的一部分，模型训练通过最小化特征和图像空间中的重建损失来训练整个模型，以达到一个较好的效果。
-
-**数据集：**OBJ3D、CLEVRER、Physion和 PHYRE
+**Dataset:** OBJ3D, CLEVRER, Physion, and PHYRE
 
 
 
@@ -574,39 +580,37 @@ https://arxiv.org/pdf/2210.05861.pdf
 
 https://arxiv.org/pdf/2302.04973.pdf
 
-**任务：**对象表示
+**Background:** Slot-based neural networks have shown progress in automatically discovering composable abstractions, but they often fail to capture spatial symmetries present in the visual world, resulting in low sample efficiency.
 
-**背景：**研究者发现基于槽的神经网络在自动发现可组合抽象方面有一定进展，但是它们通常无法充分捕捉视觉世界中存在的空间对称性，这会导致样本效率低下。
+**Introduction:** ISA is a method based on slot representations and the Slot Attention mechanism. It achieves object discovery and tracking by introducing reference frames and obtains object representations with rotational and translational invariance.
 
-**简介：**ISA是一种基于槽表示和Slot Attention机制的方法，通过引入参考帧来实现对象发现和跟踪，并获得具有旋转不变性和平移不变性的对象表示。
-
-**方法：**
+**Method:**
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173324312.png" alt="image-20230606173324312" width="60%" hight="60%"  style="zoom:50%;" />
 
-具体方法分为两类，平移缩放不变性其实是作为旋转不变性的一个基础。
+The method can be divided into two categories, where translational and scaling invariance serves as the foundation for rotational invariance.
 
-- 平移和缩放不变性：
+- Translational and scaling invariance:
 
-  为了实现平移和缩放的不变性，研究者实例化了 2D 插槽位置 (Sp) 和尺度 (Ss)，这是为每个slot设定的参考帧，它们最初可以随机采样或学习。通过sp和ss以及绝对位置编码，研究者可以得到相对位置编码。
+  To achieve translational and scaling invariance, the researchers instantiate 2D slot positions (Sp) and scales (Ss) as reference frames for each slot, which can be initially randomly sampled or learned. With sp, ss, and absolute position encoding, the researchers obtain relative position encoding.
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173350410.png" alt="image-20230606173350410" width="30%" hight="30%"  style="zoom:50%;" />
 
-  将输入通过相对位置网格转化为槽的键和值。
+  The input is transformed into slot keys and values using a relative positional grid.
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173422453.png" alt="image-20230606173422453" width="30%" hight="30%"  style="zoom:50%;" />
 
-  模型会根据当前槽的键和值来计算注意力权重，从而得到新的槽位位置和尺度。
+  The model calculates attention weights based on the keys and values of the current slots, resulting in new slot positions and scales.
 
 <img src="https://github.com/Cmy61/Awesome-Object-Centric-Learning/blob/main/image/image-20230606173451255.png" alt="image-20230606173451255" width="30%" hight="30%"  style="zoom:50%;" />
 
-  最后每个槽会获得一个sp和ss的值，利用这个参考帧就可以保证模型在处理不同尺度、位置的目标时保持平移和缩放的不变性。解码部分，从编码器中学到的槽位置和槽表示中恢复出原始的输入图像。
+  Each slot obtains values for sp and ss, ensuring translational and scaling invariance when dealing with objects of different scales and positions. In the decoding part, the original input image is reconstructed from the learned slot positions and slot representations.
 
-- 旋转不变性
+- Rotational invariance:
 
-  为了研究对象的方向对称性，研究者通过PCA方法估计对象的方向，并将其离散化为8个方向，并计算相对位置编码，从而实现旋转不变性。
+  To study the directional symmetry of objects, the researchers estimate the object's orientation using the PCA method and discretize it into 8 directions. They compute the relative position encoding to achieve rotational invariance.
 
-**数据集：**tetrominoes、object room、multishapenet、clevrtex、waymo open
+**Dataset:** tetrominoes, object room, multishapenet, clevrtex, waymo open
 
 ### Object-centric Learning with Cyclic Walks between Parts and Whole-2023 feb
 
