@@ -161,8 +161,7 @@ https://arxiv.org/pdf/2001.02407.pdf
 
 **Limitations:** The model is highly sensitive to the camera's perspective range in the scene, and it cannot accurately capture the variations in appearance introduced by significant changes in the viewpoint throughout a sequence.
 
-### Object-Centric Image Generation from Layouts-2020.12.3(
-Proceedings of the AAAI Conference on Artificial Intelligence (2021)）
+### Object-Centric Image Generation from Layouts-2020.12.3(Proceedings of the AAAI Conference on Artificial Intelligence (2021)）
 
 https://arxiv.org/pdf/2003.07449.pdf
 
